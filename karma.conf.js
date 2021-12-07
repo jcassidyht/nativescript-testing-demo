@@ -1,4 +1,4 @@
-const filePatterns = ['tests/test-main.ts','tests/**/*.ts'];
+const filePatterns = ['tests/**/*.ts'];
 module.exports = function (config) {
   const options = {
 
@@ -29,19 +29,21 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'junit'],
+    reporters: ['progress', 'sonarqubeUnit'],
 
-    junitReporter: {
-      outputDir: '../TestResults',
-      outputFile: 'TESTS_RESULTS.xml'
+    sonarQubeUnitReporter: {
+      sonarQubeVersion: 'LATEST',
+      outputFile: '../TestResults/ut_report.xml',
+      useBrowserName: false,
+      //filenameFormatter: (nextPath, result) => {console.dir(JSON.stringify(result)); return "ME"+nextPath}
+      overrideTestDescription: true,
     },
-
     // configure optional coverage, enable via --env.codeCoverage
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage'),
       subdir: '.',
       reporters: [
-        { type: 'html' },
+        { type: 'lcovonly' },
         { type: 'text-summary' }
       ]
     },

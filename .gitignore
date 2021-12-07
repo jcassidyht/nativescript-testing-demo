@@ -29,3 +29,5 @@ typings/
 
 # Test Results
 TestResults
+coverage
+.scannerwork
