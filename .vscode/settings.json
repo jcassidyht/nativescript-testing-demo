@@ -1,0 +1,8 @@
+{
+    "sonarlint.connectedMode.project": {
+        "projectKey": "jcassidyht_nativescript-testing-demo",
+    },
+    "sonarlint.analyzerProperties": {
+        "sonar.typescript.tsconfigPath": "tsconfig.sonar.json"
+    }
+}

@@ -10,10 +10,24 @@ import {DemoService} from '../services/demo.service';
 export class SearchComponent implements OnInit {
   constructor(private demo: DemoService) {
     // Use the component constructor to inject providers.
+    const unused = <any>demo;  
   }
 
   ngOnInit(): void {
-    // Init your component properties here.
+    
+  }
+
+
+  runPromise() {
+    return Promise.reject("rejection reason");
+  }
+  
+  foo_sonar_issue() {
+    try { // Noncompliant, the catch clause of the 'try' will not be executed for the code inside promise
+      this.runPromise();
+    } catch (e) {
+      console.log("Failed to run promise", e);
+    }
   }
 
   doDemo(): string {
